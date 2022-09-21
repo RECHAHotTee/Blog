@@ -1,14 +1,5 @@
 const router = require('koa-router')()
-router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'dzp'
-  })
+router.post('/api/login', async (ctx, next) => {
+  ctx.body={code:200,msg:"登录成功"}
 })
-
-router.post('/login', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'login'
-  })
-})
-
 module.exports = router
