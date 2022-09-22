@@ -47,8 +47,8 @@ const routes = [
         component: () => import('@/views/manage/ManageArticles'),
       },
       {
-        path: '/managetimeline',
-        name: 'managetimeline',
+        path: '/managetimelines',
+        name: 'managetimelines',
         meta: {
           title: '管理时间轴',
           isMenu: true,
@@ -57,7 +57,7 @@ const routes = [
           keepAlive: false,
           transition: 'fade',
         },
-        component: () => import('@/views/manage/ManageTimeline'),
+        component: () => import('@/views/manage/ManageTimelines'),
       },
       {
         path: '/pulisharticles',
