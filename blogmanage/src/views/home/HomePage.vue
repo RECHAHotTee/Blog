@@ -1,20 +1,20 @@
 <template>
-  <div>
-    <div style="background-color: #ececec; padding: 20px">
-      <a-row :gutter="12">
+  <div class="layout">
+    <div class="layout-content">
+      <a-row :gutter="12" class="layout-content-card">
         <a-col :span="8">
-          <a-card :bordered="false" style="height: 60vh" class="center">
+          <a-card :bordered="false" class="center layout-content-card">
             <p style="text-align: center;">今年已经过去了</p>
             <a-progress :percent="yearTime" />
           </a-card>
         </a-col>
         <a-col :span="8">
-          <a-card :bordered="false" style="height: 60vh;" class="center">
+          <a-card :bordered="false" class="center layout-content-card">
             <p>网站已经被访问了{{clickTimes}}次</p>
           </a-card>
         </a-col>
         <a-col :span="8">
-          <a-card :bordered="false" style="height: 60vh;" class="center">
+          <a-card :bordered="false" class="center layout-content-card">
             <p>已经发表文章{{pageCounts}}篇</p>
           </a-card>
         </a-col>
@@ -70,6 +70,26 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.layout {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-content {
+  padding: 20px;
+  background: rgb(240, 242, 245);
+  flex: 1;
+}
+
+.layout-content-card {
+  height: 100%;
+}
+
 .center {
   display: flex;
   justify-content: center;

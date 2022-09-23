@@ -3,7 +3,7 @@
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
       <div class="logo" />
       <a-menu theme="dark" mode="inline" v-for="(item, index) in menuList" :key="index">
-        <a-menu-item @click="handleMenuClick(item)">
+        <a-menu-item @click="handleMenuClick(item, $event)" class="a-menu-item">
           <user-outlined />
           <span>{{item.meta.title}}</span>
         </a-menu-item>
@@ -22,7 +22,7 @@
 </template>
 <script>
 import { UserOutlined, VideoCameraOutlined, UploadOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import { useRouter, useRoute } from "vue-router";
 
 export default {
@@ -43,9 +43,19 @@ export default {
       menuList,
     })
     // 菜单页点击跳转，更改菜单颜色
-    const handleMenuClick = (param) => {
+    const handleMenuClick = (param, e) => {
+      let menus = document.querySelectorAll('.ant-menu-item-selected');
+      menus.forEach(item => {
+        item.classList.remove('ant-menu-item-selected');
+      });
+      e.currentTarget.classList.add('ant-menu-item-selected');
+      state.selectedKey = param.path;
       router.push({ path: param.path });
     };
+    onMounted(()=>{
+      let menus = document.querySelectorAll('.a-menu-item');
+      menus[0].classList.add('ant-menu-item-selected');
+    });
     return {
       ...state,
       collapsed: ref(false),
